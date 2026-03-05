@@ -112,7 +112,7 @@ export default function SignUpPage() {
       await supabase.from("profiles").upsert({
         user_id: authData.user.id,
         full_name: parsed.data.fullName,
-      });
+      } as any);
     }
 
     setLoading(false);
@@ -206,14 +206,15 @@ export default function SignUpPage() {
             className="btn-primary w-full py-3.5 text-base disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
-              <><Loader2 size={16} className="animate-spin" /> Creating account…</>
+              // <><Loader2 size={16} className="animate-spin" /> Creating account…</>
+              <><Loader2 size={16} className="animate-spin" /> Saving details</>
             ) : (
-              "Start Free →"
+              "Join the waitlist →"
             )}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-rayo-green/60">
+        {/* <p className="mt-6 text-center text-sm text-rayo-green/60">
           Already have an account?{" "}
           <Link
             href="/auth/login"
@@ -221,7 +222,7 @@ export default function SignUpPage() {
           >
             Log in
           </Link>
-        </p>
+        </p> */}
       </div>
     </div>
   );

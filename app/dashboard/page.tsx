@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { formatNaira, relativeTime } from "@/lib/utils";
+import type { Database } from "@/types/database";
 import {
   TrendingUp,
   Wallet,
@@ -11,40 +12,30 @@ import {
   Sparkles,
 } from "lucide-react";
 
-async function getDashboardData(userId: string) {
+import type { Account, Transaction, Savings, AiInsight } from "@/types/database";
+
+// Add this return type annotation
+async function getDashboardData(userId: string): Promise<{
+  accounts: Account[];
+  transactions: Transaction[];
+  savings: Savings | null;
+  insights: AiInsight[];
+}> {
   const supabase = createClient();
 
   const [accountsRes, transactionsRes, savingsRes, insightsRes] =
     await Promise.all([
-      supabase
-        .from("accounts")
-        .select("*")
-        .eq("user_id", userId)
-        .order("created_at"),
-      supabase
-        .from("transactions")
-        .select("*")
-        .eq("user_id", userId)
-        .order("created_at", { ascending: false })
-        .limit(8),
-      supabase
-        .from("savings")
-        .select("*")
-        .eq("user_id", userId)
-        .single(),
-      supabase
-        .from("ai_insights")
-        .select("*")
-        .eq("user_id", userId)
-        .order("created_at", { ascending: false })
-        .limit(3),
+      supabase.from("accounts").select("*").eq("user_id", userId).order("created_at"),
+      supabase.from("transactions").select("*").eq("user_id", userId).order("created_at", { ascending: false }).limit(8),
+      supabase.from("savings").select("*").eq("user_id", userId).single(),
+      supabase.from("ai_insights").select("*").eq("user_id", userId).order("created_at", { ascending: false }).limit(3),
     ]);
 
   return {
-    accounts: accountsRes.data ?? [],
-    transactions: transactionsRes.data ?? [],
-    savings: savingsRes.data,
-    insights: insightsRes.data ?? [],
+    accounts: (accountsRes.data ?? []) as Account[],
+    transactions: (transactionsRes.data ?? []) as Transaction[],
+    savings: savingsRes.data as Savings | null,
+    insights: (insightsRes.data ?? []) as AiInsight[],
   };
 }
 

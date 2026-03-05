@@ -56,12 +56,12 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
+            {/* <Link
               href="/auth/login"
               className="text-sm font-medium text-rayo-green hover:text-rayo-green-dark transition-colors"
             >
               Log in
-            </Link>
+            </Link> */}
             <Link href="/auth/signup" className="btn-primary text-sm px-5 py-2.5">
               Start Free
             </Link>
