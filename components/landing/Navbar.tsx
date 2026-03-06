@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import RayoLogo from "@/components/icons/RayoLogo";
 
 const NAV_LINKS = [
   { label: "Features",    href: "#features" },
@@ -34,8 +35,10 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <img src="/Rayo-AI_logo.svg" alt="Rayo AI" className="h-8 w-8 transition-transform group-hover:scale-105" />
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-rayo-green group-hover:scale-105 transition-transform">
+              <RayoLogo className="text-white" size={26} />
+            </div>
             <span className="font-display font-bold text-rayo-green text-lg tracking-tight">
               Rayo AI
             </span>

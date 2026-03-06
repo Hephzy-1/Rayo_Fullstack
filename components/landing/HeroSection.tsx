@@ -11,7 +11,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(37,79,34,0.12) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(245,130,74,0.20) 0%, transparent 70%)",
         }}
       />
       <div
@@ -19,7 +19,7 @@ export default function HeroSection() {
         className="pointer-events-none absolute bottom-0 -left-12 w-72 h-72 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(245,130,74,0.10) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(245,130,74,0.20) 0%, transparent 70%)",
         }}
       />
 
@@ -28,10 +28,11 @@ export default function HeroSection() {
           {/* Left — copy */}
           <div>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-rayo-green/30 bg-rayo-green/8 px-4 py-1.5 mb-6 animate-fade-in">
-              <span className="h-2 w-2 rounded-full bg-rayo-orange animate-pulse2" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-rayo-green/30 bg-rayo-green/10 px-4 py-1.5 mb-6 animate-fade-in">
+              <span className="h-2 w-2 rounded-full bg-rayo-green animate-pulse2" />
               <span className="text-xs font-semibold text-rayo-green tracking-wide uppercase">
-                Now available for early access
+                {/* Now available for early access */}
+                Now accepting signups for early access
               </span>
             </div>
 
@@ -46,9 +47,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-rayo-green/70 text-lg leading-relaxed mb-8 max-w-lg animate-slide-up-delay">
-              Budget smarter. Save automatically. Invest confidently. Rayo
-              connects to your accounts and uses AI to find money you didn't
-              know you had.
+              All your money in one place, powered by AI.
+              Rayo helps you budget smarter, save automatically, and invest confidently.
             </p>
 
             {/* CTAs */}
@@ -67,7 +67,7 @@ export default function HeroSection() {
             </div>
 
             {/* Trust signals */}
-            <div className="flex flex-wrap items-center gap-6 animate-fade-in">
+            {/* <div className="flex flex-wrap items-center gap-6 animate-fade-in">
               <div className="flex -space-x-2">
                 {["SJ", "MT", "ER"].map((initials) => (
                   <span
@@ -83,7 +83,7 @@ export default function HeroSection() {
                 <span className="font-semibold text-rayo-green">10,000+</span>{" "}
                 Gen Z savers
               </p>
-            </div>
+            </div> */}
 
             {/* Micro-stats */}
             <div className="flex flex-wrap gap-6 mt-8">

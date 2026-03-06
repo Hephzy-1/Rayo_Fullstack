@@ -12,16 +12,31 @@ const config: Config = {
       colors: {
         /* ── Rayo Brand Palette ── */
         rayo: {
-          green:   "#254F22",   // primary / dark sections
-          orange:  "#F5824A",   // accent CTAs
-          alert:   "#A03A13",   // warning / error
-          beige:   "#EDE4CC",   // page background
-          "green-dark": "#1a3818",  // hover states on green
-          "orange-dark": "#d96a34", // hover states on orange
-          "beige-dark":  "#ddd3b5", // borders / dividers
-          "beige-light": "#f5f0e4", // card surfaces
+          green:          "#254F22",
+          orange:         "#F5824A",
+          alert:          "#A03A13",
+          beige:          "#EDE4CC",
+          "green-dark":   "#1a3818",
+          "green-light":  "#16A34A",
+          "orange-dark":  "#d96a34",
+          "beige-dark":   "#ddd3b5",
+          "beige-light":  "#f5f0e4",
+          text:           "#1a2e19",
+          "text-muted":   "#4a6548",
+          muted:          "#f3f4f6",
+          lemon:          "#DCFCE7",
+          grey:           "#6B7280",
+
+          /* ── Smart Stash / Sage palette ── */
+          sage: {
+            DEFAULT:  "#CBE8C3",   // card bg — bg-rayo-sage
+            dark:     "#3D8C3A",   // header icon circle — bg-rayo-sage-dark
+            mid:      "#A8CBA1",   // row icon circle — bg-rayo-sage-mid
+            label:    "#3d6b38",  
+          },
         },
-        /* ── Semantic aliases (for shadcn compatibility) ── */
+
+        /* ── Semantic aliases (shadcn compatibility) ── */
         background: "var(--background)",
         foreground:  "var(--foreground)",
         primary: {
@@ -58,17 +73,17 @@ const config: Config = {
         mono:    ["'JetBrains Mono'", "monospace"],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-        xl: "1rem",
+        lg:   "var(--radius)",
+        md:   "calc(var(--radius) - 2px)",
+        sm:   "calc(var(--radius) - 4px)",
+        xl:   "1rem",
         "2xl": "1.25rem",
         "3xl": "1.5rem",
       },
       boxShadow: {
-        card:     "0 2px 16px 0 rgba(37,79,34,0.08)",
-        "card-lg":"0 8px 40px 0 rgba(37,79,34,0.12)",
-        glow:     "0 0 32px 0 rgba(245,130,74,0.25)",
+        card:      "0 2px 16px 0 rgba(37,79,34,0.08)",
+        "card-lg": "0 8px 40px 0 rgba(37,79,34,0.12)",
+        glow:      "0 0 32px 0 rgba(245,130,74,0.25)",
       },
       backgroundImage: {
         "hero-grain":

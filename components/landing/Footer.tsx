@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Lock } from "lucide-react";
+import RayoLogo from "@/components/icons/RayoLogo"
 
 export default function Footer() {
   return (
@@ -16,8 +17,8 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Brand */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-xs">
-              R
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-xs">
+              <RayoLogo className="text-white" size={26} />
             </span>
             <span className="font-display font-bold text-rayo-green text-base">Rayo AI</span>
           </Link>

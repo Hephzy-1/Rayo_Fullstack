@@ -27,10 +27,10 @@ const FEATURES = [
   },
   {
     icon: TrendingUp,
-    title: "Investment Portfolio",
+    title: "Investment Tracking",
     description:
-      "Grow your wealth effortlessly. We build personalized portfolios based on your risk tolerance, making Wall Street accessible for everyone.",
-    cta: "Explore portfolios",
+      "Stay on top of your investments. Connect your accounts and track portfolio performance across all platforms in one dashboard.",
+    cta: "View portfolio",
     href: "#features",
   },
 ];
@@ -41,7 +41,7 @@ export default function FeaturesSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section label */}
         <div className="text-center mb-4">
-          <span className="inline-flex items-center gap-2 rounded-full border border-rayo-green/25 bg-rayo-green/8 px-4 py-1.5 text-xs font-semibold text-rayo-green uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 rounded-full border border-rayo-green/25 bg-rayo-green/10 px-4 py-1.5 text-xs font-semibold text-rayo-green uppercase tracking-widest">
             ✦ The Future of Finance
           </span>
         </div>

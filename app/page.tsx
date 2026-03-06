@@ -4,7 +4,7 @@ import HeroSection from "@/components/landing/HeroSection";
 import BanksSection from "@/components/landing/BanksSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import SmartStashSection from "@/components/landing/SmartStashSection";
-import TestimonialsSection from "@/components/landing/TestimonialsSection";
+// import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import Footer from "@/components/landing/Footer";
 
 export default function LandingPage() {
@@ -15,7 +15,7 @@ export default function LandingPage() {
       <BanksSection />
       <FeaturesSection />
       <SmartStashSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <Footer />
     </main>
   );

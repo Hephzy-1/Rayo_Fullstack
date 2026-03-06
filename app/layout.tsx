@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rayo AI — Your AI Financial Copilot",
   description:
-    "Budget smarter. Save automatically. Invest confidently. Rayo connects to your accounts and uses AI to find money you didn't know you had.",
+    "All your money in one place, powered by AI. Rayo helps you budget smarter, save automatically, and invest confidently.",
   keywords: ["fintech", "AI finance", "budgeting", "savings", "Nigeria", "Gen Z"],
   authors: [{ name: "Rayo Financial Inc." }],
   openGraph: {
