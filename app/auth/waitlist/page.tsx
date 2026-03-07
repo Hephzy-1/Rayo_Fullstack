@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Loader2, CheckCircle2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
-import { signUpSchema } from "@/lib/validations";
+import { waitlistSchema } from "@/lib/validations";
 import { cn } from "@/lib/utils";
 import type { ZodError } from "zod";
 
@@ -58,15 +58,12 @@ function InputField({
 
 type FieldErrors = Partial<Record<string, string>>;
 
-export default function SignUpPage() {
+export default function WaitlistPage() {
   const router = useRouter();
   const [form, setForm] = useState({
     fullName: "",
     email: "",
-    password: "",
-    confirmPassword: "",
   });
-  const [showPwd, setShowPwd] = useState(false);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -81,8 +78,8 @@ export default function SignUpPage() {
   setServerError("");
   setLoading(true);
 
-  // Validate form
-  const parsed = signUpSchema.safeParse(form);
+  const parsed = waitlistSchema.safeParse(form);
+
   if (!parsed.success) {
     const fe: FieldErrors = {};
     parsed.error.errors.forEach((err) => {
@@ -96,23 +93,39 @@ export default function SignUpPage() {
   try {
     const supabase = createClient();
 
-    // 1️⃣ Sign up — the trigger handles profile creation automatically
-    const { data: authData, error: authError } = await supabase.auth.signUp({
+    const { data, error } = await supabase.from("waitlist").insert({
       email: parsed.data.email,
-      password: parsed.data.password,
-      options: {
-        data: { full_name: parsed.data.fullName },
-      },
+      full_name: parsed.data.fullName,
+    } as any);
+
+    if (error) {
+      if (error.code === "23505") {
+        throw new Error("You're already on the waitlist.");
+      }
+      throw error;
+    }
+
+    // Send confirmation email
+    const emailRes = await fetch("/api/email/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: parsed.data.email,
+        name: parsed.data.fullName,
+      }),
     });
 
-    if (authError) throw new Error(authError.message);
+    const emailData = await emailRes.json();
+    console.log("Email API response:", emailData);
 
-    // 2️⃣ Done — no manual profile insert needed
+    if (!emailRes.ok) {
+      throw new Error(emailData.error || "Email failed");
+    }
+
     setDone(true);
-    console.log("Running Error:", authError);
-    
+
   } catch (err: any) {
-    console.error("Sign up error:", err);
+    console.error("Waitlist error:", err);
     setServerError(err.message || "Something went wrong. Please try again.");
   } finally {
     setLoading(false);
@@ -129,12 +142,7 @@ export default function SignUpPage() {
         <p className="text-rayo-green/70">
           We sent a confirmation link to{" "}
           <span className="font-semibold">{form.email}</span>. 
-          Click it to
-          activate your account.
         </p> 
-        <Link href="/auth/login" className="btn-primary inline-flex mx-auto">
-          Go to Login
-        </Link>
       </div>
     );
   }
@@ -143,10 +151,10 @@ export default function SignUpPage() {
     <div className="w-full max-w-md">
       <div className="rounded-3xl bg-white border border-rayo-beige-dark shadow-card-lg p-8">
         <h1 className="font-display font-black text-3xl text-rayo-green mb-1">
-          Create your account
+          Join the waitlist
         </h1>
         <p className="text-sm text-rayo-green/60 mb-8">
-          Join 1,000+ smart savers. It's free.
+          Be the first to know when we launch.
         </p>
 
         {serverError && (
@@ -173,57 +181,19 @@ export default function SignUpPage() {
             placeholder="adaeze@example.com"
             error={errors.email}
           />
-          <InputField
-            label="Password"
-            id="password"
-            type={showPwd ? "text" : "password"}
-            value={form.password}
-            onChange={set("password")}
-            placeholder="Min. 8 characters"
-            error={errors.password}
-            suffix={
-              <button
-                type="button"
-                onClick={() => setShowPwd((s) => !s)}
-                className="text-rayo-green/40 hover:text-rayo-green transition-colors"
-              >
-                {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
-              </button>
-            }
-          />
-          <InputField
-            label="Confirm Password"
-            id="confirmPassword"
-            type="password"
-            value={form.confirmPassword}
-            onChange={set("confirmPassword")}
-            placeholder="Repeat password"
-            error={errors.confirmPassword}
-          />
-
+          
           <button
             type="submit"
             disabled={loading}
             className="btn-primary w-full py-3.5 text-base disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
-              <><Loader2 size={16} className="animate-spin" /> Creating account…</>
-              
+              <><Loader2 size={16} className="animate-spin" /> Saving details...</>
             ) : (
-              "Create account →"
+              "Join the waitlist →"
             )}
           </button>
         </form>
-
-        <p className="mt-6 text-center text-sm text-rayo-green/60">
-          Already have an account?{" "}
-          <Link
-            href="/auth/login"
-            className="font-semibold text-rayo-green hover:text-rayo-orange transition-colors"
-          >
-            Log in
-          </Link>
-        </p>
       </div>
     </div>
   );

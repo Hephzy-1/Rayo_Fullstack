@@ -27,5 +27,18 @@ export const signInSchema = z.object({
   password: z.string().min(1, "Password is required"),
 });
 
+export const waitlistSchema = z.object({
+  fullName: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(80, "Name too long")
+    .regex(/^[a-zA-Z\s'-]+$/, "Name contains invalid characters"),
+  email: z
+    .string()
+    .email("Please enter a valid email address")
+    .toLowerCase(),
+});
+
 export type SignUpInput = z.infer<typeof signUpSchema>;
 export type SignInInput = z.infer<typeof signInSchema>;
+export type WaitlistInput = z.infer<typeof waitlistSchema>;

@@ -37,7 +37,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-rayo-green group-hover:scale-105 transition-transform">
-              <RayoLogo className="text-white" size={26} />
+              <RayoLogo className="text-rayo-beige" size={26} />
             </div>
             <span className="font-display font-bold text-rayo-green text-lg tracking-tight">
               Rayo AI
@@ -65,7 +65,7 @@ export default function Navbar() {
             >
               Log in
             </Link> */}
-            <Link href="/auth/signup" className="btn-primary text-sm px-5 py-2.5">
+            <Link href="/auth/waitlist" className="btn-primary text-sm px-5 py-2.5">
               Start Free
             </Link>
           </div>
@@ -95,10 +95,10 @@ export default function Navbar() {
             </a>
           ))}
           <div className="flex flex-col gap-3 pt-2">
-            <Link href="/auth/login" className="btn-secondary text-center">
+            {/* <Link href="/auth/login" className="btn-secondary text-center">
               Log in
-            </Link>
-            <Link href="/auth/signup" className="btn-primary text-center">
+            </Link> */}
+            <Link href="/auth/waitlist" className="btn-primary text-center">
               Start Free
             </Link>
           </div>

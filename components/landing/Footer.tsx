@@ -18,14 +18,14 @@ export default function Footer() {
           {/* Brand */}
           <Link href="/" className="flex items-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-xs">
-              <RayoLogo className="text-white" size={26} />
+              <RayoLogo className="text-rayo-beige" size={26} />
             </span>
             <span className="font-display font-bold text-rayo-green text-base">Rayo AI</span>
           </Link>
 
           {/* Copyright */}
           <p className="text-xs text-rayo-green/40 order-3 sm:order-2">
-            © 2026 Rayo Financial Inc.
+            © {new Date().getFullYear()} Rayo Financial Inc.
           </p>
 
           {/* Links */}

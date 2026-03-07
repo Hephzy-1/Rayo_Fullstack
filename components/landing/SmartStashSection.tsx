@@ -50,7 +50,7 @@ export default function SmartStashSection() {
             </ul>
 
             <Link
-              href="/auth/signup"
+              href="/auth/waitlist"
               className="btn-primary bg-white text-rayo-green inline-flex hover:bg-rayo-beige-light"
             >
               Activate Smart Stash

@@ -53,7 +53,7 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-10 animate-slide-up-slow">
-              <Link href="/auth/signup" className="btn-primary text-base px-8 py-3.5 group">
+              <Link href="/auth/waitlist" className="btn-primary text-base px-8 py-3.5 group">
                 Start Free
                 <ArrowRight
                   size={16}

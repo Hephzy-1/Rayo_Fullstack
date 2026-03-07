@@ -1,4 +1,5 @@
 import Link from "next/link";
+import RayoLogo from "@/components/icons/RayoLogo";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -6,8 +7,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       {/* Minimal header */}
       <header className="px-6 py-5">
         <Link href="/" className="inline-flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-sm">
-            R
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-xs">
+            <RayoLogo className="text-rayo-beige" size={26} />
           </span>
           <span className="font-display font-bold text-rayo-green text-lg">Rayo AI</span>
         </Link>

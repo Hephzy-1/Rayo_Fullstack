@@ -129,6 +129,21 @@ export interface Database {
           read?: boolean;
         };
       };
+      waitlist: {
+        Row: {
+          id: string;
+          full_name: string;
+          email: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          full_name: string;
+          email: string;
+          created_at?: string;
+        };
+        Update: never;
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -146,3 +161,4 @@ export type Account     = Database["public"]["Tables"]["accounts"]["Row"];
 export type Transaction = Database["public"]["Tables"]["transactions"]["Row"];
 export type Savings     = Database["public"]["Tables"]["savings"]["Row"];
 export type AiInsight   = Database["public"]["Tables"]["ai_insights"]["Row"];
+export type Waitlist = Database["public"]["Tables"]["waitlist"]["Row"];
