@@ -1,6 +1,8 @@
 import type { FC } from "react";
 import Image from "next/image";
-import DashboardImg from "@/public/rayo_dashboard.jpeg"; 
+
+const DashboardImg =
+  "https://res.cloudinary.com/dcmnvhhib/image/upload/v1773101280/Rayo_dashboard_qxlj1i.jpg";
 
 const BULLETS = [
   "Auto-detects paycheck deposits",
@@ -9,14 +11,36 @@ const BULLETS = [
 ];
 
 const FilledCheck = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
-    <circle cx="10" cy="10" r="10" fill="#2E5C3E"/>
-    <path d="M6 10L8.5 12.5L14 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> 
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="shrink-0"
+  >
+    <circle cx="10" cy="10" r="10" fill="#2E5C3E" />
+    <path
+      d="M6 10L8.5 12.5L14 7"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const TrendUpIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a8740" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#0a8740"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
     <polyline points="16 7 22 7 22 13"></polyline>
   </svg>
@@ -27,20 +51,20 @@ export const FeatureSection: FC = () => (
     <div className="px-6 max-w-[1100px] mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
         
-        {/* Left — image with decorative background */}
+        {/* Left — image */}
         <div className="relative w-full max-w-[480px] mx-auto lg:mx-0 isolate pt-4 pl-4">
-          {/* Beige decorative offset background */}
+          
+          {/* Beige background */}
           <div className="absolute top-0 left-0 w-[95%] h-[95%] bg-[#F3EFE6] rounded-[2.5rem] -z-10" />
 
-          {/* Main Teal Container */}
+          {/* Teal container */}
           <div className="relative aspect-square w-full bg-[#49b0b5] rounded-[2.5rem] overflow-hidden shadow-sm flex items-center justify-center p-8">
-            {/* The Image - Now using object-contain and padding to stay 'inside' */}
             <div className="relative w-full h-full">
               <Image
                 src={DashboardImg}
                 alt="Rayo dashboard preview"
                 fill
-                className="object-contain" // This ensures the whole laptop is visible
+                className="object-contain"
                 priority
               />
             </div>
@@ -55,7 +79,7 @@ export const FeatureSection: FC = () => (
               <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-0.5">
                 Avg. Annual Savings
               </p>
-              <p className="font-display font-bold text-xl text-gray-900">
+              <p className="font-bold text-xl text-gray-900">
                 +₦42,000
               </p>
             </div>
@@ -67,19 +91,25 @@ export const FeatureSection: FC = () => (
           <span className="self-start inline-flex items-center bg-[#eef5f0] text-[#2E5C3E] rounded-full px-3.5 py-1.5 text-[11px] font-bold tracking-[0.12em] uppercase mb-6">
             Smart Allocation
           </span>
-          <h2 className="font-display text-[32px] lg:text-[40px] font-black text-gray-900 leading-[1.15] mb-6">
+
+          <h2 className="text-[32px] lg:text-[40px] font-bold text-gray-900 leading-[1.15] mb-6">
             Not just a tracker.<br />
             A financial autopilot.
           </h2>
+
           <p className="text-[16px] text-gray-500 leading-relaxed mb-8 pr-4">
             Most apps just show you where your money went. Rayo actively moves
             your money to where it should go. Our AI adapts to your monthly
             spending spikes and dips, ensuring you never over-save when bills
             are due.
           </p>
+
           <ul className="space-y-4">
             {BULLETS.map((b) => (
-              <li key={b} className="flex items-center gap-3 text-[15px] text-gray-600 font-medium">
+              <li
+                key={b}
+                className="flex items-center gap-3 text-[15px] text-gray-600 font-medium"
+              >
                 <FilledCheck />
                 {b}
               </li>
@@ -89,4 +119,4 @@ export const FeatureSection: FC = () => (
       </div>
     </div>
   </section>
-);
+); 
