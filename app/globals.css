@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 
 /* Cabinet Grotesk via Fontshare CDN */
 @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap');
@@ -158,6 +161,19 @@
           hover:bg-rayo-beige-light
           hover:border-rayo-green
           active:scale-95;
+  }
+
+  .btn-accent {
+  @apply inline-flex items-center justify-center gap-2
+        rounded-3xl
+        bg-rayo-orange hover:bg-rayo-orange-dark
+        text-white hover:text-white          /* ← add hover:text-white */
+        font-semibold font-body
+        px-6 py-3 text-sm
+        shadow-glow
+        transition-all duration-200
+        active:scale-95
+        no-underline;                         /* ← add no-underline too */
   }
 
   /* Feature card */

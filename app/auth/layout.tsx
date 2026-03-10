@@ -6,12 +6,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <div className="min-h-screen flex flex-col bg-rayo-beige">
       {/* Minimal header */}
       <header className="px-6 py-5">
-        <Link href="/" className="inline-flex items-center gap-2">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-rayo-green text-white font-display font-bold text-xs">
-            <RayoLogo className="text-rayo-beige" size={26} />
-          </span>
-          <span className="font-display font-bold text-rayo-green text-lg">Rayo AI</span>
-        </Link>
       </header>
 
       {/* Content */}

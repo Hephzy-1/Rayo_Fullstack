@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { roboto } from "./lib/fonts";
 
 const config: Config = {
   darkMode: ["class"],
@@ -68,9 +69,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["'Cabinet Grotesk'", "sans-serif"],
-        body:    ["'DM Sans'", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"], 
+        body:    ["var(--font-dm-sans)", "sans-serif"],
         mono:    ["'JetBrains Mono'", "monospace"],
+        roboto:  ["'Roboto'", "sans-serif"],
+        poppins: ["'Poppins'", "sans-serif"],
+        lato:    ["'Lato'", "sans-serif"],
       },
       borderRadius: {
         lg:   "var(--radius)",
@@ -98,6 +102,10 @@ const config: Config = {
           "0%":   { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        "fade-up": {
+          "0%":   { opacity: "0", transform: "translateY(24px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" }, 
+      },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%":      { transform: "translateY(-8px)" },
@@ -112,6 +120,10 @@ const config: Config = {
         "slide-up-delay": "slide-up 0.6s ease-out 0.15s both",
         "slide-up-slow":  "slide-up 0.6s ease-out 0.3s both",
         "fade-in":        "fade-in 0.8s ease-out both",
+        "fade-up-1": "fade-up 0.8s ease both",
+        "fade-up-2": "fade-up 0.8s 0.15s ease both",
+        "fade-up-3": "fade-up 0.8s 0.30s ease both",
+        "fade-up-4": "fade-up 0.8s 0.45s ease both",
         float:            "float 4s ease-in-out infinite",
         pulse2:           "pulse2 2s ease-in-out infinite",
       },

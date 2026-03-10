@@ -132,30 +132,35 @@ export default function WaitlistPage() {
   }
 }
 
-  if (done) {
+if (done) {
     return (
-      <div className="w-full max-w-md text-center space-y-4">
-        <CheckCircle2 size={48} className="text-rayo-green mx-auto" />
-        <h2 className="font-display font-black text-3xl text-rayo-green">
-          Check your email!
-        </h2>
-        <p className="text-rayo-green/70">
-          We sent a confirmation link to{" "}
-          <span className="font-semibold">{form.email}</span>. 
-        </p> 
+      /* Flex container to center everything */
+      <div className="min-h-screen w-full flex items-center justify-center p-6">
+        <div className="w-full max-w-md text-center space-y-4">
+          <CheckCircle2 size={48} className="text-rayo-green mx-auto" />
+          <h2 className="font-display font-black text-3xl text-rayo-green">
+            Check your email!
+          </h2>
+          <p className="text-rayo-green/70">
+            We sent a confirmation link to{" "}
+            <span className="font-semibold">{form.email}</span>. 
+          </p> 
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-md">
-      <div className="rounded-3xl bg-white border border-rayo-beige-dark shadow-card-lg p-8">
-        <h1 className="font-display font-black text-3xl text-rayo-green mb-1">
-          Join the waitlist
-        </h1>
-        <p className="text-sm text-rayo-green/60 mb-8">
-          Be the first to know when we launch.
-        </p>
+    /* Flex container to center everything */
+    <div className="min-h-screen w-full flex items-center justify-center p-6">
+      <div className="w-full max-w-md">
+        <div className="rounded-3xl bg-white border border-rayo-beige-dark shadow-card-lg p-8">
+          <h1 className="font-display font-black text-3xl text-rayo-green mb-1">
+            Join the waitlist
+          </h1>
+          <p className="text-sm text-rayo-green/60 mb-8">
+            Be the first to know when we launch.
+          </p>
 
         {serverError && (
           <div className="mb-5 rounded-xl bg-rayo-alert/10 border border-rayo-alert/20 px-4 py-3 text-sm text-rayo-alert">
@@ -196,5 +201,6 @@ export default function WaitlistPage() {
         </form>
       </div>
     </div>
+  </div>
   );
 }

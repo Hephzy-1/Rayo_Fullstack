@@ -50,7 +50,7 @@ export default function SmartStashSection() {
             </ul>
 
             <Link
-              href="/auth/waitlist"
+              href="/waitlist"
               className="btn-primary bg-white text-rayo-green inline-flex hover:bg-rayo-beige-light"
             >
               Activate Smart Stash
@@ -67,7 +67,7 @@ export default function SmartStashSection() {
                   <p className="text-[10px] font-bold uppercase tracking-widest mb-1 text-rayo-grey">
                     Total Saved
                   </p>
-                  <p className="font-display font-black text-4xl leading-none text-rayo-green">
+                  <p className="font-poppins font-black text-4xl leading-none text-rayo-green">
                     ₦32,400
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function SmartStashSection() {
                         </div>
                       </div>
 
-                      <span className="font-body font-bold text-sm text-rayo-green-light">
+                      <span className="font-poppins font-black text-sm text-rayo-green-light">
                         {item.amount}
                       </span>
                     </div>

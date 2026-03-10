@@ -2,26 +2,34 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import RayoLogo from "@/components/icons/RayoLogo";
 
 const NAV_LINKS = [
-  { label: "Features",    href: "#features" },
-  { label: "How it Works",href: "#how-it-works" },
-  { label: "Pricing",     href: "#pricing" },
-  { label: "About",       href: "#about" },
+  { label: "Features",     href: "#features" },
+  { label: "How it Works", href: "/how-it-works" },
+  { label: "Pricing",      href: "#pricing" },
+  { label: "About",        href: "/about" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]     = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (href: string) => {
+    // Hash links (#features etc.) are never "active" in the router sense
+    if (href.startsWith("#")) return false;
+    return pathname === href;
+  };
 
   return (
     <header
@@ -34,6 +42,7 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
+
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="h-10 w-10 flex items-center justify-center rounded-lg bg-rayo-green group-hover:scale-105 transition-transform">
@@ -46,26 +55,28 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="text-sm font-medium text-rayo-green/80 hover:text-rayo-green transition-colors"
-              >
-                {label}
-              </a>
-            ))}
+            {NAV_LINKS.map(({ label, href }) => {
+              const active = isActive(href);
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  className={cn(
+                    "text-sm font-medium transition-colors pb-0.5",
+                    active
+                      ? "text-rayo-green font-semibold border-b-2 border-rayo-orange"
+                      : "text-rayo-green/70 hover:text-rayo-green border-b-2 border-transparent"
+                  )}
+                >
+                  {label}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop CTAs */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            {/* <Link
-              href="/auth/login"
-              className="text-sm font-medium text-rayo-green hover:text-rayo-green-dark transition-colors"
-            >
-              Log in
-            </Link> */}
-            <Link href="/auth/waitlist" className="btn-primary text-sm px-5 py-2.5">
+            <Link href="/waitlist" className="btn-primary text-sm px-5 py-2.5">
               Start Free
             </Link>
           </div>
@@ -83,22 +94,27 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-rayo-beige border-t border-rayo-beige-dark px-4 pb-6 pt-2 space-y-4 animate-slide-up">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-base font-medium text-rayo-green py-2"
-            >
-              {label}
-            </a>
-          ))}
-          <div className="flex flex-col gap-3 pt-2">
-            {/* <Link href="/auth/login" className="btn-secondary text-center">
-              Log in
-            </Link> */}
-            <Link href="/auth/waitlist" className="btn-primary text-center">
+        <div className="md:hidden bg-rayo-beige border-t border-rayo-beige-dark px-4 pb-6 pt-2 space-y-1 animate-slide-up">
+          {NAV_LINKS.map(({ label, href }) => {
+            const active = isActive(href);
+            return (
+              <Link
+                key={label}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "flex items-center text-base font-medium py-2.5 border-l-4 pl-3 transition-colors",
+                  active
+                    ? "border-rayo-orange text-rayo-green font-semibold"
+                    : "border-transparent text-rayo-green/70 hover:text-rayo-green"
+                )}
+              >
+                {label}
+              </Link>
+            );
+          })}
+          <div className="flex flex-col gap-3 pt-4">
+            <Link href="/waitlist" className="btn-primary text-center">
               Start Free
             </Link>
           </div>
