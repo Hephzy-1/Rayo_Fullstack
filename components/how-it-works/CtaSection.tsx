@@ -14,8 +14,9 @@ export const CtaSection: FC = () => (
 
     <div className="flex items-center justify-center gap-4 flex-wrap">
       <Link
-        href="/waitlist"
+        href={process.env.WAITLIST_FORM_URL || "#"}
         className="btn-secondary text-base px-9 py-4 text-rayo-green hover:text-white no-underline"
+        target="_blank"
       >
         Start Rayo Free
         <ArrowRight className="w-4 h-4" />

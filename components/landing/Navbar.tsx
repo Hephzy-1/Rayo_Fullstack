@@ -14,6 +14,8 @@ const NAV_LINKS = [
   { label: "About",        href: "/about" },
 ];
 
+const waitlistUrl = process.env.WAITLIST_FORM_URL;
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
@@ -76,9 +78,16 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/waitlist" className="btn-primary text-sm px-5 py-2.5">
-              Start Free
-            </Link>
+            <div className="hidden md:flex items-center gap-4">
+              <a
+                href={waitlistUrl}
+                className="btn-primary text-sm px-5 py-2.5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Start Free
+              </a>
+            </div>
           </div>
 
           {/* Mobile hamburger */}
@@ -114,9 +123,14 @@ export default function Navbar() {
             );
           })}
           <div className="flex flex-col gap-3 pt-4">
-            <Link href="/waitlist" className="btn-primary text-center">
+            <a
+              href={waitlistUrl}
+              className="btn-primary text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Start Free
-            </Link>
+            </a>
           </div>
         </div>
       )}

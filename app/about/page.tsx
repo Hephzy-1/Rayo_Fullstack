@@ -109,10 +109,10 @@ export default function AboutPage() {
         <h2 className="font-display text-[40px] font-bold text-rayo-green tracking-tight mb-8">
           Ready to take control?
         </h2>
-        <Link href="/auth/waitlist" className="btn-accent text-base px-9 py-4">
+        <a href={process.env.WAITLIST_FORM_URL} className="btn-accent text-base px-9 py-4">
           Join Rayo Today
           <ArrowRight className="w-4 h-4" />
-        </Link>
+        </a>
       </section>
 
     </main>

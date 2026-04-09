@@ -49,12 +49,14 @@ export default function SmartStashSection() {
               ))}
             </ul>
 
-            <Link
-              href="/waitlist"
+            <a
+            href={process.env.WAITLIST_FORM_URL}
               className="btn-primary bg-white text-rayo-green inline-flex hover:bg-rayo-beige-light"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Activate Smart Stash
-            </Link>
+            </a>
           </div>
 
           {/* ── Right: savings mock card ── */}
